@@ -27,6 +27,7 @@ jobs:
         python -m build
         rstcheck --ignore-messages "(Duplicate implicit target name:.*)" CHANGES.rst
         python -m twine check dist/*
+    timeout-minutes: 15
   test:
     strategy:
       fail-fast: false
@@ -149,6 +150,7 @@ jobs:
         path: .coverage.*
         if-no-files-found: error
         include-hidden-files: true
+    timeout-minutes: 15
   coverage:
     if: always()
     runs-on: self-hosted
@@ -185,6 +187,7 @@ jobs:
       with:
         name: coverage-report
         path: htmlcov
+    timeout-minutes: 15
 'on':
 - push
 - pull_request
