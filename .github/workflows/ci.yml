@@ -152,8 +152,8 @@ jobs:
         include-hidden-files: true
     timeout-minutes: 15
   coverage:
-    if: ${{ !cancelled() && (!cancelled() && (!cancelled() && (!cancelled() && (always()))))
-      }}
+    if: ${{ !cancelled() && (!cancelled() && (!cancelled() && (!cancelled() && (!cancelled()
+      && (always()))))) }}
     runs-on: self-hosted
     needs: test
     steps:
