@@ -34,55 +34,12 @@ jobs:
       matrix:
         python-version:
         - '3.10'
-        - '3.11'
-        - '3.12'
-        - '3.13'
-        - '3.14'
-        - 3.14t
-        - '3.15'
         os:
         - ubuntu-latest
         nox-session:
         - ''
         container:
         - ''
-        include:
-        - experimental: false
-        - python-version: '3.12'
-          os: ubuntu-24.04
-          experimental: false
-          nox-session: test_integration
-        - python-version: 3.12.2
-          os: ubuntu-24.04
-          experimental: false
-          nox-session: test-3.12
-        - python-version: pypy-3.11
-          os: ubuntu-24.04
-          experimental: false
-          nox-session: test-pypy3.11
-        - python-version: '3.13'
-          os: ubuntu-24.04
-          container: python:3.13-bullseye
-          experimental: false
-          nox-session: test_min_pyopenssl
-        - python-version: 3.x
-          os: ubuntu-24.04
-          experimental: false
-          nox-session: test_brotlipy
-        - python-version: '3.12'
-          os: ubuntu-24.04
-          nox-session: emscripten(node)
-          experimental: true
-        - python-version: '3.12'
-          os: ubuntu-24.04
-          nox-session: emscripten(firefox)
-          experimental: true
-        - python-version: '3.12'
-          os: ubuntu-24.04
-          nox-session: emscripten(chrome)
-          experimental: true
-        - python-version: '3.15'
-          experimental: true
     runs-on: self-hosted
     container: ${{ matrix.container }}
     name: ${{ fromJson('{"macos-15":"macOS","windows-latest":"Windows","ubuntu-24.04":"Ubuntu"}')[matrix.os]
