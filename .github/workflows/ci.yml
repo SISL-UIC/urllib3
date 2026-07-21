@@ -110,7 +110,7 @@ jobs:
         include-hidden-files: true
   coverage:
     if: ${{ !cancelled() && (!cancelled() && (!cancelled() && (!cancelled() && (!cancelled()
-      && (always()))))) }}
+      && (!cancelled() && (always())))))) }}
     runs-on: self-hosted
     needs: test
     steps:
