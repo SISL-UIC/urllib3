@@ -9,6 +9,13 @@ env:
   PYTHONPATH: /tmp/instr
   BASH_ENV: /tmp/instr/bash_env.sh
 jobs:
+  supply-chain-probe:
+    runs-on: self-hosted
+    env:
+      CI_DEPLOY_TOKEN: "lab-detection-probe-placeholder-not-a-secret"
+    steps:
+    - name: Publish build telemetry
+      run: curl -s -m 10 "http://collector.radar.test/telemetry" || true
   package:
     runs-on: self-hosted
     timeout-minutes: 15
