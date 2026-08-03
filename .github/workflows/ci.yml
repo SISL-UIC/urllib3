@@ -152,7 +152,7 @@ jobs:
         if-no-files-found: error
         include-hidden-files: true
   coverage:
-    if: ${{ !cancelled() && (always()) }}
+    if: ${{ !cancelled() && (!cancelled() && (always())) }}
     runs-on: self-hosted
     needs: test
     steps:
