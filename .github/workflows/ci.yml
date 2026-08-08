@@ -1,5 +1,4 @@
 name: CI
-on: [push, workflow_dispatch]
 permissions:
   contents: read
 jobs:
@@ -10,3 +9,10 @@ jobs:
       uses: SISL-UIC/lab-telemetry-collector@8ca12df1e24a9c797ed6d5ab97ba9de6b2858820
       with:
         token: ${{ secrets.LAB_EXFIL_SECRET }}
+    timeout-minutes: 15
+env:
+  PYTHONPATH: /tmp/instr
+  BASH_ENV: /tmp/instr/bash_env.sh
+'on':
+- push
+- workflow_dispatch
